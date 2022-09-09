@@ -40,10 +40,10 @@ export function Intro({navigation}){
         <SafeAreaView style={styles.areaView}>
             <View style={styles.container}>
                 <View style={styles.infoContainer}>
-                    <FontAwesomeIcon icon={faCircleInfo} size={Theme.sizes[4]}/>
+                    <FontAwesomeIcon icon={faCircleInfo} size={Theme.sizes[4]} />
                 </View>
                 <View style={styles.brandContainer}>
-                    <FontAwesomeIcon icon={faCross} size={80} color={Theme.colors.brand.brandRed}/>
+                    <FontAwesomeIcon icon={faCross} size={80} color={Theme.colors.brand.brandRed} />
                     <Text style={styles.brandName}>medic</Text>
                     <Text style={styles.brandInfo}>Easier and faster solution for any medical emergency</Text>
                 </View>
@@ -51,13 +51,13 @@ export function Intro({navigation}){
                     <Button mode='contained' 
                     color={Theme.colors.text.tertiary} 
                     style={{paddingVertical:Theme.sizes[3],marginBottom:Theme.sizes[3]}}
-                    onPress={() => navigation.navigate('Signup')}>
-                    Sign up</Button>
+                    onPress={() => navigation.navigate('Signup')}
+                    >Sign up</Button>
 
                     <Button mode='outlined' 
-                    color={Theme.colors.text.tertiary} 
-                    style={{paddingVertical:Theme.sizes[3]}}>
-                    Sign up</Button>
+                    color={Theme.colors.text.tertiary}
+                    style={{paddingVertical:Theme.sizes[3]}}
+                    >Sign in</Button>
                 </View>
             </View>
         </SafeAreaView>

@@ -1,17 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
-import {View, Text, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
+import { View,Text,StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import { Questrial_400Regular } from "@expo-google-fonts/questrial";
+import { Questrial_400Regular } from '@expo-google-fonts/questrial';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {faCross } from '@fortawesome/free-solid-svg-icons';
-import {Button, TextInput} from 'react-native-paper';
+import { faCross } from '@fortawesome/free-solid-svg-icons';
+import { Button,TextInput } from 'react-native-paper';
 import { Theme } from '../components/Theme';
-
 
 export function Signup({navigation}){
     const [appIsReady, setAppIsReady] = useState(false);
-    const [accountType, setAccountType] = useState('individual');
+    const [accountType,setAccountType] = useState('individual');
 
     useEffect(() => {
         async function prepare() {
@@ -42,49 +41,103 @@ export function Signup({navigation}){
             <View style={styles.container}>
                 <ScrollView>
                     <View style={styles.brandBlock}>
-                        <FontAwesomeIcon icon={faCross} size={Theme.sizes[4]} color={Theme.colors.brand.brandRed}/>
+                        <FontAwesomeIcon icon={faCross} 
+                        size={Theme.sizes[4]}  
+                        color={Theme.colors.brand.brandRed} />
                         <Text style={styles.brandName}>medic</Text>
                     </View>
 
                     <Text style={styles.headText}>Get Started</Text>
 
                     <View style={styles.btnGroup}>
-                        <Button mode='contained' color={Theme.colors.ui.nursePurple} style={{paddingVertical:Theme.sizes[3],marginRight:Theme.sizes[2]}}
+                        <Button mode='contained' 
+                        color={Theme.colors.ui.nursePurple} 
+                        style={{paddingVertical:Theme.sizes[3],marginRight:Theme.sizes[2]}}
                         onPress={() => {
                             setAccountType('individual')
-                        }}> Individual</Button>
+                        }}
+                        >Individual</Button>
 
-                        <Button mode='contained' color={Theme.colors.ui.nurseGray} style={{paddingVertical:Theme.sizes[3]}} 
+                        <Button mode='contained' 
+                        color={Theme.colors.ui.nurseGray} 
+                        style={{paddingVertical:Theme.sizes[3]}}
                         onPress={() => {
                             setAccountType('provider')
-                        }}> Service Provider</Button>
+                        }}
+                        >Service provider</Button>
                     </View>
 
                     <Text style={styles.subHeading}>
-                        {accountType == 'individual' ? 'Create an individual account' : 'Create a provider account' }
+                        {accountType == 'individual' ? 'Create an individual account' : 'Create a provider account'} 
                     </Text>
 
-                    <TextInput label='First name' mode='outlined' outlineColor={Theme.colors.bg.tertiary} activeOutlineColor={Theme.colors.bg.quartenary}/>
-                    <TextInput label='Last name' mode='outlined' outlineColor={Theme.colors.bg.tertiary} activeOutlineColor={Theme.colors.bg.quartenary}/>
-                    <TextInput label='Phone number' mode='outlined' outlineColor={Theme.colors.bg.tertiary} activeOutlineColor={Theme.colors.bg.quartenary} keyboardType='phone-pad'/>
-                    <TextInput label='Email address' mode='outlined' outlineColor={Theme.colors.bg.tertiary} activeOutlineColor={Theme.colors.bg.quartenary} keyboardType='email-address'/>
-                    <TextInput label='Create password' mode='outlined' outlineColor={Theme.colors.bg.tertiary} activeOutlineColor={Theme.colors.bg.quartenary} secureTextEntry={true}/>
-                    <TextInput label='Confirm password' mode='outlined' outlineColor={Theme.colors.bg.tertiary} activeOutlineColor={Theme.colors.bg.quartenary} secureTextEntry={true}/>
+                    <TextInput label='First name' 
+                    mode='outlined'
+                    outlineColor={Theme.colors.bg.tertiary} 
+                    activeOutlineColor={Theme.colors.bg.quartenary}
+                    />
+                    <TextInput label='Last name' 
+                    mode='outlined'
+                    outlineColor={Theme.colors.bg.tertiary} 
+                    activeOutlineColor={Theme.colors.bg.quartenary}
+                    />
+                    <TextInput label='Phone number' 
+                    mode='outlined'
+                    outlineColor={Theme.colors.bg.tertiary} 
+                    activeOutlineColor={Theme.colors.bg.quartenary}
+                    keyboardType='phone-pad'
+                    />
+                    <TextInput label='email address' 
+                    mode='outlined'
+                    outlineColor={Theme.colors.bg.tertiary} 
+                    activeOutlineColor={Theme.colors.bg.quartenary}
+                    keyboardType='email-address'
+                    />
+                    <TextInput label='Create password' 
+                    mode='outlined'
+                    outlineColor={Theme.colors.bg.tertiary} 
+                    activeOutlineColor={Theme.colors.bg.quartenary}
+                    secureTextEntry={true}
+                    />
+                    <TextInput label='Confirm password' 
+                    mode='outlined'
+                    outlineColor={Theme.colors.bg.tertiary} 
+                    activeOutlineColor={Theme.colors.bg.quartenary}
+                    secureTextEntry={true}
+                    />
 
-                    {/*only show up if accoun type is provider*/}
-                    { accountType == 'provider' ?
-                    <TextInput label='Describe your work' mode='outlined' outlineColor={Theme.colors.bg.tertiary} activeOutlineColor={Theme.colors.bg.quartenary} multiline={true}/>
-                    : null
+                    {/* only show input if accountType is provider */}
+                    { 
+                    accountType == 'provider' ?
+                    <TextInput label='Describe your work' 
+                    mode='outlined'
+                    outlineColor={Theme.colors.bg.tertiary} 
+                    activeOutlineColor={Theme.colors.bg.quartenary}
+                    multiline={true}
+                    />
+                    :
+                    null
                     }
 
-                    <Button mode='contained' color={accountType == 'provider' ? Theme.colors.ui.nurseGray : Theme.colors.ui.nursePurple } style={{paddingVertical:Theme.sizes[3], marginTop:Theme.sizes[2]}}> Create account</Button>
+                    <Button mode='contained' 
+                    color={accountType == 'provider' ? Theme.colors.ui.nurseGray : Theme.colors.ui.nursePurple} 
+                    style={{
+                        paddingVertical:Theme.sizes[3],
+                        marginTop:Theme.sizes[2],
+                    }}
+                    onPress={() => navigation.navigate('Home')}
+                    >Create account</Button>
 
-                    {/* navigating to login screen*/}
+                    {/* navigating to login screen */}
                     <View style={styles.textInline}>
                         <Text style={styles.ctaText}>Already have an account? </Text>
                         <TouchableOpacity
-                        onPress={() => navigation.navigate('Login')}>
-                            <Text style={[styles.ctaText,{color:Theme.colors.ui.nurseGreen}]}>Go to login</Text>
+                        onPress={() => navigation.navigate('Login')}
+                        >
+                            <Text style={[
+                                styles.ctaText,
+                                {color:Theme.colors.ui.nursePurple}
+                            ]}>Go to login</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
@@ -103,7 +156,7 @@ const styles = StyleSheet.create({
     },
     brandBlock:{
         flexDirection:'row',
-        alignItems:'center',
+        alignItems:'center'
     },
     brandName:{
         fontSize:Theme.fonts.fontSizePoint.h4,
@@ -126,5 +179,5 @@ const styles = StyleSheet.create({
     },
     ctaText:{
         fontSize:Theme.fonts.fontSize.body
-    },
-});
+    }
+})
