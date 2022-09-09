@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { StackNavigation } from './infrastructure/navigation/StackNav';
 import { Service } from './infrastructure/screens/Service';
+import { Profile } from './infrastructure/screens/Profile';
 
 export default function App() {
 
